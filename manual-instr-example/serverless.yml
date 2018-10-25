@@ -1,0 +1,32 @@
+service: manual-instrumentation-python
+
+custom:
+  deploymentBucket: #TODO: enter your AWS S3 deployment bucket here
+  thundraApiKey: #TODO: enter your API key here
+  stage: dev #Configure your stage if you want
+  region: us-west-1 #Configure your AWS region if you want
+  profile: default #Configure your AWS profile if you want
+
+provider:
+  name: aws
+  runtime: python3.6
+  stage: ${self:custom.stage}
+  region: ${self:custom.region}
+  profile: ${self:custom.profile}
+  deploymentBucket: ${self:custom.deploymentBucket}
+  memorySize: 256
+  timeout: 300
+  environment:
+    thundra_apiKey: ${self:custom.thundraApiKey}
+  iamRoleStatements:
+  - Effect: Allow
+    Action:
+    - logs:*
+    Resource: [
+      "*"
+    ]
+
+functions:
+  manually-instr-demo-lambda:
+    name: manually-instr-demo-lambda
+    handler: handler.handler
