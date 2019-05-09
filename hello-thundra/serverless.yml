@@ -30,3 +30,9 @@ functions:
   hello-thundra:
     name: hello-thundra
     handler: hello_world.handler
+  hello-world:
+    name: hello-world
+    handler: thundra.handler.wrapper
+    environment:
+      thundra_agent_lambda_handler: hello_world_service.handler
+
