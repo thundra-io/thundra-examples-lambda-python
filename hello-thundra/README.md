@@ -12,9 +12,7 @@ This is a simple example to trace your lambda go functions with [Thundra](https:
 pip3 install thundra -t .
 ```
 
-2 - **Login** to [Thundra](https://www.thundra.io/) to create your API key:
-
-![create-api-key](../readme-src/create-api-key.gif)
+2 - **Login** to [Thundra](https://console.thundra.io) to create your Project and copy your API Key:
 
 3 - Paste your API key to serverless.yml and also set your AWS S3 deployment bucket:
 
@@ -37,7 +35,7 @@ sls deploy
 sls invoke --function hello-thundra --data '{"message":"Hello Thundra!"}'
 ```
 
-5 - Visit [Thundra](https://www.thundra.io/) to observe your metrics. It might take 1-2 minutes to be visible.
+5 - Visit [Thundra](https://console.thundra.io/) to observe your metrics. It might take 1-2 minutes to be visible.
 
 
 
