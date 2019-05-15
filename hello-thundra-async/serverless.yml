@@ -1,7 +1,6 @@
 service: hello-thundra-async
 
 custom:
-  deploymentBucket: #TODO: enter your AWS S3 deployment bucket here
   thundraApiKey: #TODO: enter your API key here
   stage: dev #Configure your stage if you want
   region: us-west-1 #Configure your AWS region if you want
@@ -13,12 +12,11 @@ provider:
   stage: ${self:custom.stage}
   region: ${self:custom.region}
   profile: ${self:custom.profile}
-  deploymentBucket: ${self:custom.deploymentBucket}
   memorySize: 256
   timeout: 300
   environment:
       thundra_apiKey: ${self:custom.thundraApiKey}
-      thundra_lambda_publish_cloudwatch_enable: true
+      thundra_lambda_report_cloudwatch_enable: true
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -28,7 +26,7 @@ provider:
       ]
 
 plugins:
-  - serverless-plugin-thundra-monitor-cw
+  - serverless-plugin-thundra-lambda-adapters-cw
 
 functions:
   hello-thundra-async:
